@@ -4,19 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: "Roboto", sans-serif;
+html,
+body {
+  height: 100%;
 }
-.mdc-notched-outline__notch
-{
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+.mdc-notched-outline__notch {
   border-right: none;
 }
 .fullscreen {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

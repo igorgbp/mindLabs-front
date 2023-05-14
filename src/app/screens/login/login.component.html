@@ -1,16 +1,17 @@
 <div class="fullscreen">
-  <div class="border-2 p-10 flex flex-col">
-    <mat-form-field appearance="outline" class="">
-      <mat-label>Outline form field</mat-label>
-      <input class="border-none" matInput placeholder="Placeholder" />
+  <div class="p-10 flex flex-col items-center w-96">
+    <img src="{{ logo }}" class="w-40 mb-10" />
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Email</mat-label>
+      <input class="border-none" matInput placeholder="Digite seu e-mail" />
       <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
-    <mat-form-field appearance="outline" class="">
-        <mat-label>Outline form field</mat-label>
-        <input class="border-none" matInput placeholder="Placeholder" />
-        <!-- <mat-hint>Hint</mat-hint> -->
-      </mat-form-field>
-      <button mat-flat-button color="primary">Primary</button>
-      <button mat-stroked-button color="primary">Primary</button>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Senha</mat-label>
+      <input class="border-none" matInput placeholder="Digite sua senha" />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="mb-2" (click)="handleClick()">Entrar</button>
+    <button mat-stroked-button color="primary">Cadastrar-se</button>
   </div>
 </div>
