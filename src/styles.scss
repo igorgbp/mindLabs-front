@@ -22,6 +22,21 @@ body {
 .fullscreen {
   width: 100vw;
   height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+@media (max-width: 768px) {
+  /* Estilos para telas menores que 768px */
+  .fullscreen {
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+  }
+}
+
+.center-content {
   display: flex;
   align-items: center;
   justify-content: center;
