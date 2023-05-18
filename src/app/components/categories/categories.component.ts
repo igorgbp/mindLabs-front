@@ -12,7 +12,7 @@ export class CategoriesComponent {
       name: "Fruits",
       description: "açklsdjf",
       icon: "../../../assets/logo.png",
-      color: "#2a2a2a",
+      color: "#2a2",
     },
     {
       id: 2,
@@ -47,21 +47,21 @@ export class CategoriesComponent {
       name: "Móveis",
       description: "açklsdjf",
       icon: "chair",
-      color: "#2a2a2a",
+      color: "light",
     },
     {
       id: 3,
       name: "Móveis",
       description: "açklsdjf",
       icon: "chair",
-      color: "#2a2a2a",
+      color: "Blue",
     },
     {
       id: 3,
       name: "Móveis",
       description: "açklsdjf",
-      icon: "chair",
-      color: "#2a2a2a",
+      icon: "cake",
+      color: "red",
     },
   ];
 }

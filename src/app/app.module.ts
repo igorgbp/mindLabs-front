@@ -14,7 +14,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { SliderComponent } from './components/slider/slider.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+import { PromoComponent } from './components/promo/promo.component'; 
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatCardModule} from '@angular/material/card';
     HeaderComponent,
     SliderComponent,
     CategoriesComponent,
-    CategorieComponent
+    CategorieComponent,
+    PromoComponent
   ],
   imports: [
     BrowserModule,
