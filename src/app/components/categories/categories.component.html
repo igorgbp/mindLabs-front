@@ -1,1 +1,14 @@
-<p>categories works!</p>
+<div class=" flex items-center flex-col">
+  <p class="md:text-2xl text-l">CATEGORIAS</p>
+
+  <div class=" grid grid-cols-4 md:grid-cols-8  gap-4 md:mt-3 mt-1">
+    <app-categorie
+      *ngFor="let item of categories"
+      [id]="item.id"
+      [name]="item.name"
+      [description]="item.description"
+      [icon]="item.icon"
+      [color]="item.color"
+    ></app-categorie>
+  </div>
+</div>

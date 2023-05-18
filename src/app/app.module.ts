@@ -13,6 +13,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'; 
 import { SliderComponent } from './components/slider/slider.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { CategorieComponent } from './components/categorie/categorie.component';
+import {MatCardModule} from '@angular/material/card'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
     HomeComponent,
     HeaderComponent,
     SliderComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CategorieComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
