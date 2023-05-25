@@ -15,7 +15,8 @@ import { SliderComponent } from './components/slider/slider.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
 import {MatCardModule} from '@angular/material/card';
-import { PromoComponent } from './components/promo/promo.component'; 
+import { PromoComponent } from './components/promo/promo.component';
+import { CategorieAreaComponent } from './screens/categorie-area/categorie-area.component'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PromoComponent } from './components/promo/promo.component';
     SliderComponent,
     CategoriesComponent,
     CategorieComponent,
-    PromoComponent
+    PromoComponent,
+    CategorieAreaComponent
   ],
   imports: [
     BrowserModule,

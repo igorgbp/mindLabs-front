@@ -7,8 +7,9 @@ import { Component,Input } from '@angular/core';
 })
 export class CategorieComponent {
   
-  @Input() id!: number;
+  @Input() id!: string;
   @Input() name!: string;
+  @Input() route!: string;
   @Input() description!: string;
   @Input() icon!: string;
   @Input() color!: string;
