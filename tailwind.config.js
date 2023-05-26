@@ -6,10 +6,16 @@ module.exports = {
   theme: {
     extend: {},
     colors:{
-      Light:'#F3EEF5',
+      Light:'#e8dfec',
+      LightHover:'#dfd3e4',
       White:'#FFF',
       Blue: '#2B2D42',
-      red: '#EF233C'
+      Red: '#EF233C',
+
+      //categories
+      Clothes: '#c35dee',
+      Tech: '#5d91ee',
+
     }
   },
   plugins: [],
