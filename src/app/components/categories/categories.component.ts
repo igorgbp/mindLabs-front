@@ -9,67 +9,51 @@ export class CategoriesComponent {
   public categories: Category[] = [
     {
       id: '1',
-      name: "Vestuário",
-    route:"roupas",
+      name: "Notebooks",
       description: "açklsdjf",
-      icon: "checkroom",
-      color: "#2a2",
+      image: "../../../assets/cat/note.png",
     },
     {
       id: '2',
-      name: "Eletrodomesticos",
-      route: "eletro",
+      name: "Desktop",
       description: "açklsdjf",
-      icon: "kitchen",
-      color: "#2a2a2a",
+      image: "../../../assets/cat/desktop.png",
     },
     {
       id: '3',
-      name: "Eletronicos",
-      route: "tec",
+      name: "Headphones",
       description: "açklsdjf",
-      icon: "devices",
-      color: "#2a2a2a",
+      image: "../../../assets/cat/headphone.png",
     },
     {
       id: '4',
-      name: "Móveis",
-      route: "moveis",
+      name: "Mouses",
       description: "açklsdjf",
-      icon: "chair",
-      color: "#2a2a2a",
+      image: "../../../assets/cat/mouse.png",
     },
     {
       id: '5',
-      name: "Saúde",
-      route: "saude",
+      name: "Teclados",
       description: "açklsdjf",
-      icon: "monitor_heart",
-      color: "#2a2a2a",
+      image: "../../../assets/cat/keyboard.png",
     },
     {
       id: '6',
-      name: "Bolsas",
-      route: "bolsas",
+      name: "Smartphones",
       description: "açklsdjf",
-      icon: "shopping_bag",
-      color: "light",
+      image: "../../../assets/cat/smartphone.png",
     },
     {
       id: '7',
-      name: "Acessórios",
-      route: "acess",
+      name: "Monitores",
       description: "açklsdjf",
-      icon: "watch",
-      color: "Blue",
+      image: "../../../assets/cat/monitor.png",
     },
     {
       id: '8',
-      name: "Lazer",
-      route: "lazer",
+      name: "Consoles",
       description: "açklsdjf",
-      icon: "sports_basketball",
-      color: "red",
+      image: "../../../assets/cat/console.png",
     },
   ];
 }
@@ -77,8 +61,6 @@ export class CategoriesComponent {
 class Category {
   id!: string;
   name!: string;
-  route!: string;
   description!: string;
-  icon!: string;
-  color!: string;
+  image!: string;
 }

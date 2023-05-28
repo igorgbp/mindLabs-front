@@ -7,7 +7,7 @@ import { CategorieAreaComponent } from './screens/categorie-area/categorie-area.
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'home', component:HomeComponent},
-  {path:'categorie-area/:id', component:CategorieAreaComponent},
+  {path:'cat-list/:name', component:CategorieAreaComponent},
 
 ];
 

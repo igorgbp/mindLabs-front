@@ -1,6 +1,7 @@
 <div
   class="flex w-screen justify-between items-center pt-6 md:pt-9 p-2 md:p-4 px-4 md:px-20 bg-Light gap-6"
 >
+<!-- logo -->
   <button class="flex items-center gap-2" routerLink="/home">
     <mat-icon
       aria-hidden="false"
@@ -10,19 +11,19 @@
     ></mat-icon>
     <p class="font-bold text-lg text-Blue hidden sm:block">mindLabs</p>
   </button>
-  <mat-form-field appearance="outline" class="search w-96">
-    <!-- <mat-label>Pesquisa</mat-label> -->
-    <mat-icon matPrefix>search</mat-icon>
+
+  <!-- search -->
+  <div class="p-2 rounded-full w-96 flex bg-LightHover px-2 ">
+    <mat-icon matPrefix class="text-Blue">search</mat-icon>
     <input
-      type="search"
-      matInput
       placeholder="Ex. Roupas masculinas"
-      class="p-0"
+      class="w-full outline-none bg-transparent px-2 text-Blue"
     />
-  </mat-form-field>
+  </div>
+
+  <!-- right-options -->
   <div class="gap-2 flex">
     <mat-icon class="mat-icon-size-md">shopping_cart</mat-icon>
-
     <mat-icon class="mat-icon-size-md">favorites</mat-icon>
     <mat-icon class="mat-icon-size-md"> account_circle</mat-icon>
   </div>

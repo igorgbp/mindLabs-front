@@ -13,10 +13,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'; 
 import { SliderComponent } from './components/slider/slider.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { CategorieComponent } from './components/categorie/categorie.component';
 import {MatCardModule} from '@angular/material/card';
 import { PromoComponent } from './components/promo/promo.component';
-import { CategorieAreaComponent } from './screens/categorie-area/categorie-area.component'; 
+import { CategorieAreaComponent } from './screens/categorie-area/categorie-area.component';
+import { ItemCategorieComponent } from './components/item-categorie/item-categorie.component'; 
 
 @NgModule({
   declarations: [
@@ -26,9 +26,9 @@ import { CategorieAreaComponent } from './screens/categorie-area/categorie-area.
     HeaderComponent,
     SliderComponent,
     CategoriesComponent,
-    CategorieComponent,
     PromoComponent,
-    CategorieAreaComponent
+    CategorieAreaComponent,
+    ItemCategorieComponent
   ],
   imports: [
     BrowserModule,
