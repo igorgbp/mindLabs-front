@@ -1,17 +1,23 @@
 <div class="fullscreen center-content">
   <div class="p-10 flex flex-col items-center w-96">
     <img src="{{ logo }}" class="w-40 mb-10" />
-    <mat-form-field appearance="outline" class="w-full">
+    <p>Login</p>
+    <mat-form-field appearance="outline" class="w-full ">
       <mat-label>Email</mat-label>
-      <input class="border-none" matInput placeholder="Digite seu e-mail" />
-      <!-- <mat-hint>Hint</mat-hint> -->
+      <input class="border-none"  [(ngModel)]="username"  matInput placeholder="Digite seu e-mail" />
     </mat-form-field>
-    <mat-form-field appearance="outline" class="w-full">
+    <mat-form-field appearance="outline" class="w-full" >
       <mat-label>Senha</mat-label>
-      <input class="border-none" matInput placeholder="Digite sua senha" />
+      <input class="border-none"  [(ngModel)]="password"   matInput placeholder="Digite sua senha" />
       <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
-    <button mat-flat-button color="primary" class="mb-2" (click)="handleClick()">Entrar</button>
-    <button mat-stroked-button color="primary">Cadastrar-se</button>
+    <div class="h-5 mb-1">
+          <p *ngIf="!validCredentials" class="text-Red text-sm">email ou senha incorretos</p>
+    </div>
+   
+    
+
+    <button mat-flat-button color="primary" class="mb-2" (click)="handleClick(username, password)">Entrar</button>
+    <button mat-stroked-button color="primary" (click)="goToSignUp()">Cadastrar-se</button>
   </div>
 </div>

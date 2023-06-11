@@ -17,7 +17,10 @@ import {MatCardModule} from '@angular/material/card';
 import { PromoComponent } from './components/promo/promo.component';
 import { CategorieAreaComponent } from './screens/categorie-area/categorie-area.component';
 import { ItemCategorieComponent } from './components/item-categorie/item-categorie.component'; 
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './screens/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,8 @@ import { ItemCategorieComponent } from './components/item-categorie/item-categor
     CategoriesComponent,
     PromoComponent,
     CategorieAreaComponent,
-    ItemCategorieComponent
+    ItemCategorieComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,10 @@ import { ItemCategorieComponent } from './components/item-categorie/item-categor
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
