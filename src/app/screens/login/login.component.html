@@ -1,7 +1,12 @@
-<div class="fullscreen center-content">
-  <div class="p-10 flex flex-col items-center w-96">
-    <img src="{{ logo }}" class="w-40 mb-10" />
-    <p>Login</p>
+<div class="fullscreen center-content bg-LightHover">
+  <div class="p-10 flex flex-col items-center w-96 rounded-lg shadow-md bg-White">
+    <!-- <img src="{{ logo }}" class="w-40 mb-10" /> -->
+    <mat-icon
+    aria-hidden="false"
+    aria-label="home icon"
+    fontIcon="rocket_launch"
+    class="mat-icon-size text-Blue mb-10"
+  ></mat-icon>
     <mat-form-field appearance="outline" class="w-full ">
       <mat-label>Email</mat-label>
       <input class="border-none"  [(ngModel)]="username"  matInput placeholder="Digite seu e-mail" />
@@ -12,12 +17,12 @@
       <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
     <div class="h-5 mb-1">
-          <p *ngIf="!validCredentials" class="text-Red text-sm">email ou senha incorretos</p>
+          <p *ngIf="!validCredentials" class="text-Red text-sm">Email ou senha incorretos</p>
     </div>
    
     
 
-    <button mat-flat-button color="primary" class="mb-2" (click)="handleClick(username, password)">Entrar</button>
-    <button mat-stroked-button color="primary" (click)="goToSignUp()">Cadastrar-se</button>
+    <button  class="mb-1 bg-LightHover text-Dark w-36 rounded-lg py-1" (click)="handleClick(username, password)">Entrar</button>
+    <button class=" border-2 w-36 rounded-lg py-1" (click)="goToSignUp()">Cadastrar-se</button>
   </div>
 </div>
