@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './screens/signup/signup.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductComponent } from './screens/product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { SignupComponent } from './screens/signup/signup.component';
     PromoComponent,
     CategorieAreaComponent,
     ItemCategorieComponent,
-    SignupComponent
+    SignupComponent,
+    ProductsListComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

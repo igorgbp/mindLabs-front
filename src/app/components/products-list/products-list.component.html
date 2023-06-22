@@ -1,0 +1,47 @@
+<div
+  class="flex items-center w-full border-t-2 border-Light justify-center bg-White p-4"
+>
+  <div
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 sm:gap-2 md:gap-4"
+  >
+    <button
+      class="rounded-lg w-44 md:w-56 flex flex-col bg-Light group hover:bg-LightHover"
+      *ngFor="let item of listProducts"
+      (click)="press()"
+    >
+      <div class="w-9 h-9 absolute">
+        <mat-icon class="mat-icon-size-md text-Red absolute bottom-0 right-0"
+          >star</mat-icon
+        >
+        <div
+          class="rounded-lg h-8 w-8 bg-Blue  border-2 border-LightAux flex items-center justify-center"
+        >
+          <p class="text-White font-bold text-xs">
+            {{ item.rating }}
+          </p>
+        </div>
+      </div>
+
+      <div class="h-full w-full px-2 py-4 flex flex-col">
+        <img
+          src="{{ item.image }}"
+          class="h-40 w-full group-hover:scale-105 object-contain mx-auto transition duration-400"
+        />
+        <div class="max-h-14 overflow-hidden line-clamp-2 mt-2">
+          <p
+            class="font-medium text-md text-Dark text-center transition duration-100"
+          >
+            {{ item.name }}
+          </p>
+        </div>
+        <div class="w-full flex justify-center mt-2">
+          <span class="text-3xl font-bold text-Blue">
+            <span class="text-sm font-light">R$</span> {{ item.price }}</span
+          >
+        </div>
+      </div>
+
+      <!-- <p class="font-normal text-xs text-DarkHover">{{ item.description }}</p> -->
+    </button>
+  </div>
+</div>

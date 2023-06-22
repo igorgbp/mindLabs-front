@@ -8,17 +8,29 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HomeComponent {
 constructor(private productService:ProductService){}
+products:Product[]= []
 ngOnInit() {
-  
   this.productService.listProducts().subscribe(
     (data) => {
-      console.log(data);
-      console.log('deu bom ')
-
+      this.products = data;
+      console.log(this.products)
     },
     (error) => {
       console.error(error);
     }
   );
 }
+
+}
+export class Product {
+  id!: number;
+  name!: string;
+  description!: string;
+  image!: string;
+  rating!: number;
+  price!:number;
+  category!:number;
+  storage!:number;
+  discount!:number;
+  discount_price!:number;
 }
