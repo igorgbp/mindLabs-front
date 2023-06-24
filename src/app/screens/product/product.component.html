@@ -1,11 +1,44 @@
 <app-header></app-header>
-<div class="fullscreen flex flex-col">
-    <div class="border-2">
-        <div class="grid md:grid-cols-2  grid-cols-1">
-            <div class="border-2">asdf</div>
-            <h1>asdf</h1>
-        </div>
-
+<div class="fullscreen flex flex-col md:py-6 py-3 md:px-20 px-6 ">
+  <div class="grid md:grid-cols-2 grid-cols-1 gap-4 md:gap-10">
+    <div class=" rounded-xl px-8 py-4 bg-Light flex items-center justify-center">
+      <img
+        class="mx-auto  w-96 "
+        src="https://t.ctcdn.com.br/6cEExYf-Xq-q0it1P0PO7UfedMA=/fit-in/400x400/filters:format(webp):fill(transparent):watermark(wm/prd.png,-32p,center,1,none,15)/i413088.png"
+      />
     </div>
-    
+    <div class="py-4 flex flex-col">
+      <p class="text-4xl font-bold text-Dark mb-1 text-center md:text-left">titulo</p>
+      <p class="text-lg font-semibold text-Blue mb-2 text-center md:text-left">
+        R$ <span class="text-3xl">699</span>
+      </p>
+      <p class="text-md text-DarkHover mb-4 text-center md:text-left">
+        descricao cao asdfasdf fasdf asdf asdf s s asd fasd fadsf as dfas sa
+        dfasdf asdf asdf asd sa df asdfa sdf asdf asdfasdfasdf asd fas df sadf
+        sdf sda fa sdfasdfasdf asdf asdf asdf sa dfs dfas dfasdf asdf asdf
+      </p>
+      <p class="md:mt-auto">Quantidade</p>
+      <div class="flex mb-4 gap-2  mx-auto md:mx-0">
+       
+        <button
+          class="p-2 rounded-lg bg-Blue text-White w-52 flex justify-around items-center"
+        >
+          <mat-icon class="text-White mat-icon-size-small"
+            >shopping_cart</mat-icon
+          >
+          <p class="font-bold">Adicionar ao carrinho</p>
+        </button>
+        <button class="flex justify-center items-center w-10 h-10">
+          <mat-icon class="text-Red mat-icon-size">favorite</mat-icon>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-1"> <mat-icon class="text-Red mat-icon-size-small"
+        >star</mat-icon
+      ><p class="font-medium text-Dark">4.9</p></div>
+     
+      <p class="">category</p>
+    </div>
+  </div>
+  5
 </div>

@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'signup', component:SignupComponent},
   {path:'home', component:HomeComponent},
   {path:'cat-list/:name', component:CategorieAreaComponent},
-  {path:'product', component:ProductComponent},
+  {path:'product/:item', component:ProductComponent},
 
 
 ];

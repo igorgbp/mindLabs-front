@@ -14,10 +14,11 @@ export class ProductsListComponent {
   ngOnInit(): void {
    console.log(this.listProducts)
   }
-  press(){
+  itemSelected(item:Product){
     console.log('press')
-    this.router.navigate(['/product']);
-
+    console.log(item)
+    this.router.navigate(['/product', item]);
+    // [routerLink]="['/cat-list', name]"
   }
   @Input() listProducts!: Product[];
 }
