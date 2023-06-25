@@ -13,7 +13,7 @@
   </button>
 
   <!-- search -->
-  <div class="p-2 rounded-full w-96 flex bg-LightHover px-2 ">
+  <div class="p-2 rounded-full w-96 flex bg-White px-2 ">
     <mat-icon matPrefix class="text-Blue">search</mat-icon>
     <input
       placeholder="Ex. Roupas masculinas"
@@ -23,8 +23,16 @@
 
   <!-- right-options -->
   <div class="gap-2 flex">
-    <mat-icon class="mat-icon-size-md">shopping_cart</mat-icon>
+    <button (click)="pressCart()">
+      <mat-icon class="mat-icon-size-md">shopping_cart</mat-icon>
+    </button>
+    <button (click)="pressFavorites()">
     <mat-icon class="mat-icon-size-md">favorites</mat-icon>
+  </button>
+
+    <button (click)="pressUserPage()">
     <mat-icon class="mat-icon-size-md"> account_circle</mat-icon>
+  </button>
+
   </div>
 </div>

@@ -8,13 +8,14 @@
       class="rounded-lg w-44 md:w-56 flex flex-col bg-Light group hover:bg-LightHover"
       *ngFor="let item of listProducts"
       (click)="itemSelected(item)"
+      
     >
       <div class="w-9 h-9 absolute">
         <mat-icon class="mat-icon-size-md text-Red absolute bottom-0 right-0"
           >star</mat-icon
         >
         <div
-          class="rounded-lg h-8 w-8 bg-Blue  border-2 border-LightAux flex items-center justify-center"
+          class="rounded-lg h-8 w-8 bg-Blue flex items-center justify-center"
         >
           <p class="text-White font-bold text-xs">
             {{ item.rating }}

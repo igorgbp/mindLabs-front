@@ -23,6 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './screens/signup/signup.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductComponent } from './screens/product/product.component';
+import { CartComponent } from './screens/cart/cart.component';
+import { UserPageComponent } from './screens/user-page/user-page.component';
+import { FavoritesComponent } from './screens/favorites/favorites.component';
+import { PaymentComponent } from './screens/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +40,11 @@ import { ProductComponent } from './screens/product/product.component';
     ItemCategorieComponent,
     SignupComponent,
     ProductsListComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent,
+    UserPageComponent,
+    FavoritesComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

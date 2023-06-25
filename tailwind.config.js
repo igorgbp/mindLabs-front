@@ -15,6 +15,7 @@ module.exports = {
       Blue: '#2B2D42',
       Red: '#EF233C',
       Yellow: '#cdbe00',
+      Pix:'#66ecda',
       
       
       //meta
