@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../screens/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,10 @@ export class UserService {
   }
   login(data:any) {
     const body = { username: data.username, password: data.password };
-    return this.http.post('http://localhost:4534/login', body);
+    return this.http.post<User>('http://localhost:4534/login', body);
   }
   signUp(data:any) {
-    const body = { email: data.email, username: data.username, password: data.password };
+    const body = { email: data.email, username: data.username, password: data.password, first_name: data.first_name, last_name: data.last_name, cpf: data.cpf  };
     return this.http.post('http://localhost:4534/cad-user', body);
   }
 

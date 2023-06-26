@@ -1,18 +1,82 @@
 <app-header></app-header>
 <div
-
   class="fullscreen flex md:flex-row flex-col md:py-6 py-3 md:px-20 px-4 gap-2"
 >
   <div class="w-full flex flex-col">
-    <p class="md:text-2xl text-lg mx-auto md:mx-0 font-bold text-DarkHover mb-1">
-      Pix
-    </p>
-    <div class="border-t-2 border-LightHover pt-4">
-    <!-- <button>Criar novo endereço</button> -->
-    <button (click)="changeVisiblePix()" class="border-2 p-4 rounded-lg flex items-center justify-center"><p class="text-DarkHover">Gerar qr pix</p><mat-icon class="mat-icon-size">arrow_forward_ios</mat-icon></button>
-    <div *ngIf="visiblePix">    <img class="border-2 w-96"  src="data:image/jpeg;base64,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"  alt="">
-</div>
+    <app-title-screen title="Endereço"></app-title-screen>
+    <div class="mt-4 mb-8 grid grid-cols-2">
+      <div class="w-full flex flex-col ">
+      <div class="flex w-full gap-4">
+        <div class="w-96 ">
+          <p class="text-md font-semibold text-DarkHover mx-2">Rua</p>
+          <input
+            type="text"
+            class="p-2 px-4  rounded-lg bg-Light focus:bg-LightHover outline-none mb-4 w-full"
+          />
+        </div>
+        <div class="w-20">
+          <p class="text-md font-semibold text-DarkHover mx-2">Número</p>
+          <input
+            type="text"
+            class="p-2 px-4 w-full rounded-lg bg-Light focus:bg-LightHover outline-none mb-4"
+          />
+        </div>
+      </div>
+
+      <div class="flex w-full gap-4">
+        <div class="w-72 ">
+          <p class="text-md font-semibold text-DarkHover mx-2">Bairro</p>
+          <input
+            type="text"
+            class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none mb-4 w-full"
+          />
+        </div>
+        <div class="w-72">
+          <p class="text-md font-semibold text-DarkHover mx-2">Cidade</p>
+          <input
+            type="text"
+            class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none mb-4"
+          />
+        </div>
+      </div>
+      <div class="flex w-full gap-4">
+        <div class="w-40 ">
+          <p class="text-md font-semibold text-DarkHover mx-2">Estado</p>
+          <input
+            type="text"
+            class="p-2 px-4  rounded-lg bg-Light focus:bg-LightHover outline-none mb-4 w-full"
+          />
+        </div>
+        <div class="w-72">
+          <p class="text-md font-semibold text-DarkHover mx-2">Complemento</p>
+          <input
+            type="text"
+            class="p-2 px-4 w-full rounded-lg bg-Light focus:bg-LightHover outline-none mb-4"
+          />
+        </div>
+      </div>
+    </div>
     </div>
     
- 
+
+    <app-title-screen title="Pagamento"></app-title-screen>
+
+    <div class="pt-4">
+      <!-- <button>Criar novo endereço</button> -->
+      <button
+        (click)="generatePixQr()"
+        class="border-2 p-4 rounded-lg flex items-center justify-center"
+      >
+        <p class="text-DarkHover">Gerar qr pix</p>
+        <mat-icon class="mat-icon-size">arrow_forward_ios</mat-icon>
+      </button>
+      <div *ngIf="visiblePix">
+        <img
+          class="border-2 w-96"
+          src="data:image/jpeg;base64,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"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
 </div>

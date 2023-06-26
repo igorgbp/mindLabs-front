@@ -27,6 +27,7 @@ import { CartComponent } from './screens/cart/cart.component';
 import { UserPageComponent } from './screens/user-page/user-page.component';
 import { FavoritesComponent } from './screens/favorites/favorites.component';
 import { PaymentComponent } from './screens/payment/payment.component';
+import { TitleScreenComponent } from './components/title-screen/title-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,9 @@ import { PaymentComponent } from './screens/payment/payment.component';
     CartComponent,
     UserPageComponent,
     FavoritesComponent,
-    PaymentComponent
+    PaymentComponent,
+    TitleScreenComponent,
+    
   ],
   imports: [
     BrowserModule,

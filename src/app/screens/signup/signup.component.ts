@@ -13,11 +13,13 @@ export class SignupComponent {
   email!:string;
   username!:string;
   password!:string;
-
+  first_name!:string;
+  last_name!:string;
+  cpf!:number;
   validCredentials:boolean = true;
-  handleClick(email: string ,username: string, password: string) {
-    const userCredentials = { email: email, username: username, password: password };
-    if(email==''||username==''||password=='') this.validCredentials=false;
+  handleClick(email: string ,username: string, password: string, first_name:string, last_name:string, cpf:number) {
+    const userCredentials = { email: email, username: username, password: password, first_name, last_name, cpf };
+    if(email==''||username==''||password==''|| first_name=='' || last_name=='') this.validCredentials=false;
     this.userService.signUp(userCredentials).subscribe(
       (data) => {
         console.log(data);

@@ -1,12 +1,14 @@
 <app-header></app-header>
+<div class="fullscreen md:py-6 py-3 md:px-20 px-4">
+
+<app-title-screen title="Carrinho"></app-title-screen>
+
 <div
 *ngIf="carrinho.length!=0"
-  class="fullscreen flex md:flex-row flex-col md:py-6 py-3 md:px-20 px-4 gap-2"
+  class=" flex md:flex-row flex-col  gap-2"
 >
   <div class="w-full flex flex-col">
-    <p class="md:text-5xl text-3xl mx-auto md:mx-0 font-bold text-Dark mb-2">
-      Carrinho
-    </p>
+   
     <div class="mt-6">
       <div
         class=" mb-2 shadow-md flex md:px-4 px-3 py-2 gap-4 rounded-lg hover:bg-Light border-b-2 border-r-2  border-LightHover"
@@ -49,17 +51,17 @@
   </div>
   <!-- right banner with confirm -->
   <div
-    class="w-96 bg-LightHover flex flex-col py-6 px-4 rounded-lg mx-auto md:mx-0"
+    class="w-96 bg-Light flex flex-col py-6 px-4 rounded-lg mx-auto md:mx-0"
   >
-    <p>asdfa</p>
-    <p>asdfa</p>
-    <p>asdfa</p>
+    <p class="text-lg font-semibold text-Blue border-b-2 border-LightHover mb-4">Resumo do Pedido</p>
+    <p *ngFor="let item of carrinho " class="mb-2 font-regular text-sm font-medium">{{item.name}}</p>
+    <p class="md:mt-auto mb-1 text-sm  text-DarkHover">valor: R$ <span class="text-xl font-semibold text-Red">{{totalValue}}</span>,00</p>
     <button
     (click)="goToPayment()"
-      class="bg-Blue md:mt-auto mt-4 rounded-lg px-4 py-2 flex justify-between items-center"
+      class="bg-Blue  rounded-lg px-4 py-2 flex justify-between items-center"
     >
       <p class="text-White font-regular text-lg">Continuar</p>
-      <mat-icon class="text-White font-bold">check</mat-icon>
+      <mat-icon class="text-White font-bold">shopping_cart_checkout</mat-icon>
     </button>
   </div>
 </div>
@@ -68,4 +70,5 @@
     <p>Carrinho vazio</p>
     <button><p>Adicione itens</p></button>
 
+</div>
 </div>

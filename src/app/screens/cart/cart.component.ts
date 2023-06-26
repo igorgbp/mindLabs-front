@@ -9,9 +9,15 @@ import { Router } from "@angular/router";
 })
 export class CartComponent {
   carrinho: Array<Product> = [];
-
+  totalValue: number = 0;
   constructor(private router:Router) {
     this.carrinho = JSON.parse(localStorage.getItem("carrinho")!);
+    
+    for(let i=0; i<this.carrinho.length; i++ )
+    {
+      this.totalValue= this.totalValue + this.carrinho[i].price;
+    }
+    console.log(this.totalValue)
   }
 
   removeItem(itemToRemove: Product) {

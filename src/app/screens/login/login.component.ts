@@ -12,15 +12,21 @@ export class LoginComponent {
   username!:string;
   password!:string;
   validCredentials:boolean = true;
-  handleClick(username: string, password: string) {
+  user!:User;
+
+  
+
+  handleLogin(username: string, password: string) {
     const userCredentials = { username: username, password: password };
   
     this.userService.login(userCredentials).subscribe(
       (data) => {
-        console.log(data);
+        console.log('data:',data);
         console.log('deu bom ')
         this.router.navigate(['/home']);
         this.validCredentials=true;
+
+
 
       },
       (error) => {
@@ -37,5 +43,12 @@ export class LoginComponent {
 
    
 
+  }
+
+  export class User{
+    id?:number;
+    email?:String;
+    username?: String;
+ 
   }
 
