@@ -28,6 +28,7 @@ import { UserPageComponent } from './screens/user-page/user-page.component';
 import { FavoritesComponent } from './screens/favorites/favorites.component';
 import { PaymentComponent } from './screens/payment/payment.component';
 import { TitleScreenComponent } from './components/title-screen/title-screen.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { TitleScreenComponent } from './components/title-screen/title-screen.com
     FavoritesComponent,
     PaymentComponent,
     TitleScreenComponent,
+    CustomInputComponent,
     
   ],
   imports: [

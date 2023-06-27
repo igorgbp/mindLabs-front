@@ -1,96 +1,101 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { AddressList, UserLogged } from "src/app/models/user";
+import { Transaction } from "src/app/models/payment";
 
+import { UserService } from "src/app/services/user.service";
+import { PaymentService } from "src/app/services/payment.service";
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss']
+  selector: "app-payment",
+  templateUrl: "./payment.component.html",
+  styleUrls: ["./payment.component.scss"],
 })
 export class PaymentComponent {
-  visiblePix:boolean = false;
-  constructor(){}
-
+  visiblePix: boolean = false;
+  user!: UserLogged;
+  addressList!: AddressList;
+  qrCode!:string;
+  constructor(private userService: UserService, private paymentService:PaymentService) {
+    this.user = JSON.parse(localStorage.getItem("user")!)[0];
+  }
+  ngOnInit() {
+    console.log("onint");
+    let id = parseInt(this.user.id!);
+    console.log(id);
+    this.userService.listUserAddress(id).subscribe(
+      (data) => {
+        this.addressList = data;
+        console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
   // generatePixQr(transaction:Transaction){
   //   this.visiblePix = true
   // }
-  generatePixQr(){
-    this.visiblePix = true
+  generatePixQr() {
+    console.log("fasdf");
+    this.visiblePix = true;
+    const transaction: Transaction = {
+      transaction_amount: 10,
+      description: "asdf",
+      payment_method_id: "pix",
+      payer: {
+        email: "bruninhadivinolandia@gmail.com",
+        first_name: "Bruna",
+        last_name: "dfg",
+        identification: {
+          type: "CPF",
+         number: "19119119100"
+        },
+        address: {
+          city: "Divinolandia",
+          neighborhood: "Centro",
+          federal_unit: "MG",
+          street_name: "RUa da bruninha",
+          street_number: "69",
+          zip_code: "39735000",
+        },
+      },
+    };
+
+    this.paymentService.Payment(transaction).subscribe(
+      (data) => {
+      //   localStorage.setItem("user", JSON.stringify(data));
+      //   localStorage.setItem("carrinho", "");
+        // console.log("data:",data);
+       let  result = JSON.stringify(data)
+        this.qrCode=data['point_of_interaction']['transaction_data']['qr_code_base64']
+        // this.router.navigate(["/home"]);
+        // this.validCredentials = true;
+      },
+      (error) => {
+        console.error(error);
+        // this.validCredentials = false;
+      }
+    );
   }
-}
 
+  // generatePaymentQR()
 
-class Transaction {
-  transaction_amount: number;
-  description: string;
-  payment_method_id: string;
-  payer: Payer;
+  // listUserAddress(){
 
-  constructor(
-    transaction_amount: number,
-    description: string,
-    payment_method_id: string,
-    payer: Payer
-  ) {
-    this.transaction_amount = transaction_amount;
-    this.description = description;
-    this.payment_method_id = payment_method_id;
-    this.payer = payer;
-  }
-}
+  //   console.log('listuser')
+  //     console.log(id)
+  //   // let address:AddressList=  thies.userService.listUserAddress(id);
 
-class Payer {
-  email: string;
-  first_name: string;
-  last_name: string;
-  identification: Identification;
-  address: Address;
+  //   this.userService.listUserAddress(id).subscribe(
+  //     (data) => {
+  //       this.addressList = data;
+  //       console.log(data);
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  //   console.log(this.addressList)
 
-  constructor(
-    email: string,
-    first_name: string,
-    last_name: string,
-    identification: Identification,
-    address: Address
-  ) {
-    this.email = email;
-    this.first_name = first_name;
-    this.last_name = last_name;
-    this.identification = identification;
-    this.address = address;
-  }
-}
-
-class Identification {
-  type: string;
-  number: string;
-
-  constructor(type: string, number: string) {
-    this.type = type;
-    this.number = number;
-  }
-}
-
-class Address {
-  zip_code: string;
-  street_name: string;
-  street_number: string;
-  neighborhood: string;
-  city: string;
-  federal_unit: string;
-
-  constructor(
-    zip_code: string,
-    street_name: string,
-    street_number: string,
-    neighborhood: string,
-    city: string,
-    federal_unit: string
-  ) {
-    this.zip_code = zip_code;
-    this.street_name = street_name;
-    this.street_number = street_number;
-    this.neighborhood = neighborhood;
-    this.city = city;
-    this.federal_unit = federal_unit;
-  }
+  // }
 }

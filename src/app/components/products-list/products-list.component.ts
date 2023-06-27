@@ -13,9 +13,7 @@ export class ProductsListComponent {
   produtoSelecionado: Product | null = null;
 
   constructor(private router: Router, private stateService: StateService) {
-    this.stateService.selectedProductSubject.subscribe((produto) => {
-      this.produtoSelecionado = produto;
-    });
+   
   }
 
   ngOnInit(): void {
@@ -23,10 +21,12 @@ export class ProductsListComponent {
   }
 
   itemSelected(item: Product): void {
-    console.log('press');
+    console.log('press item: ', item);
     // this.stateService.selecionarProduto(item); // Atualiza o produto selecionado no estado
-    this.router.navigate(['/product']);
     localStorage.setItem('produtoSelecionado', JSON.stringify(item));
+    console.log('storage: ',localStorage)
+    this.router.navigate(['/product']);
+   
   }
 
   @Input() listProducts!: Product[];

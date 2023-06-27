@@ -1,17 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Transaction } from '../models/payment';
+import { environment } from 'src/environments/environment.prod';
+// require('dotenv').config();
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
+  // private readonly token: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    // this.token = process.env.MPTOKEN;
+  }
+  Payment(transaction: Transaction):Observable<any> {
+   
+    const apiKey = environment.apipix;
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    };
 
-  // Exemplo de método para uma chamada GET
-  generatePaymentQR():Observable<String> {
-   let  body = {}
-    return this.http.post<String>('http://localhost:4535/payment-pix', body);
+    return this.http.post<any>('https://api.mercadopago.com/v1/payments', transaction, { headers });
   }
 }

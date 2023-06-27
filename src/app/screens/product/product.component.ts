@@ -31,8 +31,9 @@ export class ProductComponent {
   }
 
   addToCart() {
-    const carrinhoAtual = JSON.parse(localStorage.getItem("carrinho")!) || []; // Verifica se há um carrinho existente no localStorage
-
+    console.log('press')
+    const carrinhoAtual = localStorage.getItem("carrinho")!.length>0?  JSON.parse(localStorage.getItem("carrinho")!) : []; // Verifica se há um carrinho existente no localStorage
+    console.log(carrinhoAtual)
     carrinhoAtual.push(this.produtoSelecionado); // Adiciona o novo item ao carrinho
 
     localStorage.setItem("carrinho", JSON.stringify(carrinhoAtual));

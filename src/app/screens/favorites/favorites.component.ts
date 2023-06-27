@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Product } from '../home/home.component';
 import { StateService } from 'src/app/services/state/state-service.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserLogged } from 'src/app/models/user';
 
 @Component({
   selector: 'app-favorites',
@@ -12,15 +13,14 @@ import { ProductService } from 'src/app/services/product.service';
 export class FavoritesComponent {
   produtoSelecionado: Product | null = null;
   listProducts!: Product[];
-
+  user!:UserLogged;
   constructor(private router: Router, private stateService: StateService, private productService:ProductService) {
-    this.stateService.selectedProductSubject.subscribe((produto) => {
-      this.produtoSelecionado = produto;
-    });
+    this.user = JSON.parse(localStorage.getItem('user')!)[0]
   }
 
 ngOnInit() {
-  this.productService.listProducts().subscribe(
+  let id = parseInt(this.user.id!);
+  this.productService.listProductsFavorite(id).subscribe(
     (data) => {
       this.listProducts = data;
       console.log(this.listProducts)
