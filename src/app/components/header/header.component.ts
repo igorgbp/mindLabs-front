@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { Product } from 'src/app/screens/home/home.component';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private router:Router){}
-pressCart(){
+  search:string = '';
+  productList!: Product[] | null;
+  cartLength!:number;
+  constructor(private router:Router,  private productService:ProductService){
+    // if(JSON.parse(localStorage.getItem('carrinho')!) == undefined){
+    //   // this.router.navigate([''])
+    //   console.log('asdf')
+    //   console.log(JSON.parse(localStorage.getItem('carrinho')!))
+
+    
+    // }else  this.cartLength = JSON.parse(localStorage.getItem("carrinho")!).length;
+   
+  }
+  
+
+  pressCart(){
   console.log('asdf')
   this.router.navigate(['/cart']);
 
@@ -22,5 +38,41 @@ pressUserPage(){
   console.log('asdf')
   this.router.navigate(['/user-page']);
 
+}
+
+// pressSearch(){
+//   // this.router.navigate(['/search']);
+//   this.productService.listProducts().subscribe(
+//     (data) => {
+//       // console.log('data',data)
+//       this.productList = data.filter((item) =>
+//         item.name.toLowerCase().includes(this.search.toLowerCase())
+//       );
+//       console.log(this.productList)
+//      this.router.navigate(['/search']);
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+    
+//   );
+// }
+
+pressSearch(){
+  this.router.navigate(['/search']);
+  // this.productService.listProducts().subscribe(
+  //   (data) => {
+  //     // console.log('data',data)
+  //     this.productList = data.filter((item) =>
+  //       item.name.toLowerCase().includes(this.search.toLowerCase())
+  //     );
+  //     console.log(this.productList)
+  //    this.router.navigate(['/search']);
+  //   },
+  //   (error) => {
+  //     console.error(error);
+  //   }
+    
+  // );
 }
 }

@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
-import { AddressList, UserLogged } from "src/app/models/user";
+import { Address, UserLogged } from "src/app/models/user";
 import { Transaction } from "src/app/models/payment";
 
 import { UserService } from "src/app/services/user.service";
 import { PaymentService } from "src/app/services/payment.service";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.component.html",
@@ -12,19 +13,74 @@ import { PaymentService } from "src/app/services/payment.service";
 export class PaymentComponent {
   visiblePix: boolean = false;
   user!: UserLogged;
-  addressList!: AddressList;
-  qrCode!:string;
-  constructor(private userService: UserService, private paymentService:PaymentService) {
+  addressList!: Address[];
+  qrCode!: string;
+  newAddressVisible: boolean = false;
+  addressListVisible: boolean = true;
+  selectedAddress!: Address;
+  newAddress!: Address;
+  street?: string;
+  number?: number;
+  neighborhood?: string;
+  city?: string;
+  state?: string;
+  complement?: string;
+  colorAddressItem!:string;
+  errorPixVisible:boolean = false;
+  constructor(
+    private userService: UserService,
+    private paymentService: PaymentService,
+    private router:Router
+  ) {
+    // if(!localStorage.getItem('user')){
+    //   this.router.navigate([''])
+    
+    // }
+    console.log(JSON.parse(localStorage.getItem("user")!)[0])
     this.user = JSON.parse(localStorage.getItem("user")!)[0];
+    
   }
   ngOnInit() {
-    console.log("onint");
-    let id = parseInt(this.user.id!);
-    console.log(id);
-    this.userService.listUserAddress(id).subscribe(
+    console.log('init', this.user)
+    this.listAddress();
+   
+  }
+  selectAddress(address:Address){
+    console.log(address)
+    this.selectedAddress = address;
+    
+  }
+
+  listAddress() {
+    this.userService.listUserAddress().subscribe(
       (data) => {
         this.addressList = data;
         console.log(data);
+        if (data.length == 0) {
+          this.addressListVisible = false;
+          this.newAddressVisible = true;
+        }
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  cadAddress() {
+    this.newAddress = {
+      number: this.number,
+      street: this.street,
+      neighborhood: this.neighborhood,
+      city: this.city,
+      state: this.state,
+      complement: this.complement,
+    };
+    this.userService.cadAddress(parseInt(this.user.id!), this.newAddress).subscribe(
+      (data) => {
+        console.log(data);
+        console.log("deu bom ");
+        this.addressListVisible = true
+        this.listAddress()
       },
       (error) => {
         console.error(error);
@@ -32,70 +88,58 @@ export class PaymentComponent {
     );
   }
 
-  // generatePixQr(transaction:Transaction){
-  //   this.visiblePix = true
-  // }
+  removeAddress(idAddress:number){
+    console.log('inside remove address')
+    this.userService.rmAddress(idAddress).subscribe(
+      (data) => {
+        // console.log(data);
+        console.log("deu bom ");
+        this.listAddress()
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
   generatePixQr() {
     console.log("fasdf");
     this.visiblePix = true;
+    console.log('cpf', this.user.cpf)
     const transaction: Transaction = {
       transaction_amount: 10,
       description: "asdf",
       payment_method_id: "pix",
       payer: {
-        email: "bruninhadivinolandia@gmail.com",
-        first_name: "Bruna",
-        last_name: "dfg",
+        email: this.user.email!,
+        first_name: this.user.first_name!,
+        last_name: this.user.last_name!,
         identification: {
           type: "CPF",
-         number: "19119119100"
+          // number: this.user.cpf!.toString(),
+          number:this.user.cpf!
         },
         address: {
-          city: "Divinolandia",
-          neighborhood: "Centro",
+          city: this.selectedAddress.city!,
+          neighborhood: this.selectedAddress.neighborhood!,
           federal_unit: "MG",
-          street_name: "RUa da bruninha",
-          street_number: "69",
+          street_name: this.selectedAddress.street!,
+          street_number: this.selectedAddress.number!.toString(),
           zip_code: "39735000",
         },
       },
     };
-
+    console.log('baguvix', transaction)
     this.paymentService.Payment(transaction).subscribe(
       (data) => {
-      //   localStorage.setItem("user", JSON.stringify(data));
-      //   localStorage.setItem("carrinho", "");
-        // console.log("data:",data);
-       let  result = JSON.stringify(data)
-        this.qrCode=data['point_of_interaction']['transaction_data']['qr_code_base64']
-        // this.router.navigate(["/home"]);
-        // this.validCredentials = true;
+        let result = JSON.stringify(data);
+        console.log(result)
+        this.qrCode =
+          data["point_of_interaction"]["transaction_data"]["qr_code_base64"];
       },
       (error) => {
         console.error(error);
-        // this.validCredentials = false;
+        this.errorPixVisible  = true;
       }
     );
   }
-
-  // generatePaymentQR()
-
-  // listUserAddress(){
-
-  //   console.log('listuser')
-  //     console.log(id)
-  //   // let address:AddressList=  thies.userService.listUserAddress(id);
-
-  //   this.userService.listUserAddress(id).subscribe(
-  //     (data) => {
-  //       this.addressList = data;
-  //       console.log(data);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  //   console.log(this.addressList)
-
-  // }
 }

@@ -18,7 +18,6 @@ export class SignupComponent {
   email!: string;
   username!: string;
   password!: string;
-  password2!: string;
   first_name!: string;
   last_name!: string;
   cpf!: string;
@@ -45,14 +44,16 @@ export class SignupComponent {
       username == "" ||
       password == "" ||
       first_name == "" ||
-      last_name == "" ||
-      password != this.password2
+      last_name == "" 
+
     )
       this.validCredentials = false;
     this.userService.signUp(userCredentials).subscribe(
       (data) => {
         console.log(data);
         console.log("deu bom ");
+        localStorage.setItem('user', JSON.stringify(data))
+
         this.router.navigate(["/home"]);
         this.validCredentials = true;
       },

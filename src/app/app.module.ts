@@ -29,6 +29,8 @@ import { FavoritesComponent } from './screens/favorites/favorites.component';
 import { PaymentComponent } from './screens/payment/payment.component';
 import { TitleScreenComponent } from './components/title-screen/title-screen.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { SearchResultsComponent } from './screens/search-results/search-results.component';
+import {MatBadgeModule} from '@angular/material/badge'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +51,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
     PaymentComponent,
     TitleScreenComponent,
     CustomInputComponent,
+    SearchResultsComponent,
     
   ],
   imports: [
@@ -62,7 +65,8 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
     MatCardModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

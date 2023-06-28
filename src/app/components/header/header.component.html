@@ -12,19 +12,10 @@
     <p class="font-bold text-lg text-Blue hidden sm:block">mindLabs</p>
   </button>
 
-  <!-- search -->
-  <div class="p-2 rounded-full w-96 flex bg-White px-2 ">
-    <mat-icon matPrefix class="text-Blue">search</mat-icon>
-    <input
-      placeholder="Ex. Roupas masculinas"
-      class="w-full outline-none bg-transparent px-2 text-Blue"
-    />
-  </div>
 
-  <!-- right-options -->
   <div class="gap-2 flex">
     <button (click)="pressCart()">
-      <mat-icon class="mat-icon-size-md">shopping_cart</mat-icon>
+      <mat-icon class="mat-icon-size-md" matBadge="{{cartLength}}" matBadgeColor="warn">shopping_cart</mat-icon>
     </button>
     <button (click)="pressFavorites()">
     <mat-icon class="mat-icon-size-md">favorites</mat-icon>

@@ -2,12 +2,62 @@
 <div
   class="fullscreen flex flex-col md:py-6 py-3 lg:px-20 md:px-15 sm:px-10 px-4 gap-2"
 >
-
   <div class="w-full flex flex-col">
     <app-title-screen title="Meus dados"></app-title-screen>
 
-    <div class="grid md:grid-cols-2 grid-cols-1 gap-4">
-      
+    <div class="pt-6 flex justify-start">
+      <div class="w-2/3 flex flex-col">
+        <div class="flex gap-2">
+          <input
+            class="w-full outline-none text-Dark p-4 rounded-lg mb-2 bg-Light"
+            placeholder="Nome"
+            [(ngModel)]="first_name"
+          />
+          <input
+          class="w-full outline-none text-Dark p-4 rounded-lg mb-2 bg-Light"
+          placeholder="Sobrenome"
+          [(ngModel)]="last_name"
+        />
+          <!-- <app-custom-input [(value)]="last_name" placeholder="Sobrenome" /> -->
+        </div>
+        <div class="flex gap-2">
+          <input
+          class="w-full outline-none text-Dark p-4 rounded-lg mb-2 bg-Light"
+          placeholder="Username"
+          [(ngModel)]="username"
+        />
+         
+        </div>
+   
+        <div class="flex gap-2 w-full">
+          <input
+          class="w-full outline-none text-Dark p-4 rounded-lg mb-2 bg-Light"
+          placeholder="Senha"
+          [(ngModel)]="password"
+          type="password"
+        />
+         
+        </div>
+
+        <div class="h-5 mb-1">
+          <p *ngIf="!validCredentials" class="text-Red text-sm">
+            Preencha todos os campos
+          </p>
+        </div>
+
+        <button
+          color="primary"
+          class="mb-2 w-40 rounded-lg p-2 bg-Blue "
+          (click)="handleClick()"
+        >
+        <p class="text-Light font-semibold text-md">
+          Atualizar
+        </p>
+          
+        </button>
+        <button  (click)="logOut()">sair</button>
+
+      </div>
     </div>
   </div>
 </div>

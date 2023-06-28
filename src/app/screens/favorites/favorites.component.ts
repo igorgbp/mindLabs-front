@@ -15,12 +15,16 @@ export class FavoritesComponent {
   listProducts!: Product[];
   user!:UserLogged;
   constructor(private router: Router, private stateService: StateService, private productService:ProductService) {
+    if(!localStorage.getItem('user')){
+      this.router.navigate([''])
+    
+    }
     this.user = JSON.parse(localStorage.getItem('user')!)[0]
   }
 
 ngOnInit() {
   let id = parseInt(this.user.id!);
-  this.productService.listProductsFavorite(id).subscribe(
+  this.productService.listProductsFavorite().subscribe(
     (data) => {
       this.listProducts = data;
       console.log(this.listProducts)

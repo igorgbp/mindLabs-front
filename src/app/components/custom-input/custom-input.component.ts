@@ -11,7 +11,7 @@ export class CustomInputComponent {
   @Input() wid:number|null = null;
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
-  inputValue!: string;
+  inputValue: string = this.value;
 
   onInputChange() {
     this.value = this.inputValue;

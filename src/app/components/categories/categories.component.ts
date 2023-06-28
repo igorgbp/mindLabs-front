@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { Category } from "src/app/models/product";
 
 @Component({
   selector: "app-categories",
@@ -6,6 +8,7 @@ import { Component } from "@angular/core";
   styleUrls: ["./categories.component.scss"],
 })
 export class CategoriesComponent {
+  constructor(private router:Router){}
   public categories: Category[] = [
     {
       id: '1',
@@ -56,11 +59,14 @@ export class CategoriesComponent {
       image: "../../../assets/cat/console.png",
     },
   ];
+  itemSelected(item: Category): void {
+    console.log('press item: ', item);
+    // this.stateService.selecionarProduto(item); // Atualiza o produto selecionado no estado
+    localStorage.setItem('categorySelected', JSON.stringify(item));
+    // console.log('storage: ',localStorage)
+    this.router.navigate(['/cat-list']);
+   
+  }
 }
 
-class Category {
-  id!: string;
-  name!: string;
-  description!: string;
-  image!: string;
-}
+

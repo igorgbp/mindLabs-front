@@ -1,5 +1,8 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/models/product';
+import { Product } from '../home/home.component';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-categorie-area',
@@ -7,11 +10,31 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./categorie-area.component.scss']
 })
 export class CategorieAreaComponent {
-  id!: string | null;
+  categorySelected: Category | null = null;
+  catStorage = localStorage.getItem("categorySelected");
+  productList!: Product[] | null;
+  
+  constructor(private route: ActivatedRoute, private productService:ProductService) {
+    this.categorySelected = JSON.parse(this.catStorage!);
 
-  constructor(private route: ActivatedRoute) { }
+   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);}
+    
+    console.log(this.categorySelected?.name)
+    this.listProducts()
+  }
+
+  listProducts(){
+    this.productService.listProducts().subscribe(
+      (data) => {
+        console.log('data',data)
+        this.productList = data.filter((item)=>item.category.toString() == this.categorySelected?.id)
+        
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }

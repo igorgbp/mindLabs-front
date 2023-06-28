@@ -28,7 +28,6 @@
       <app-custom-input [(value)]="email" placeholder="Email"  />
       <div class="flex gap-2 w-full">
       <app-custom-input [(value)]="password" placeholder="Senha"  />
-      <app-custom-input [(value)]="password2" placeholder="Senha" />
     </div>
 
       <div class="h-5 mb-1">
@@ -38,16 +37,14 @@
       </div>
 
       <button
-        mat-flat-button
-        color="primary"
-        class="mb-2"
+        class="mb-1 bg-Blue text-Light w-36 rounded-lg py-1 mx-auto"
         (click)="
           handleClick(email, username, password, first_name, last_name, cpf)
         "
       >
         Cadastrar-se
       </button>
-      <button mat-stroked-button color="primary" (click)="goToLogin()">
+      <button  class="mb-1 bg-LightHover text-Dark w-36 rounded-lg py-1 mx-auto"(click)="goToLogin()">
         Voltar ao login
       </button>
     </div>

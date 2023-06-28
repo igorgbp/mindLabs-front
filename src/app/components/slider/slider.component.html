@@ -1,10 +1,10 @@
 <div class="flex items-center relative w-full">
-  <img src="../../../assets/sofa2.jpg" alt="" class="" />
+  <img src="{{sliderlist[sliderIdx]}}" alt="" class="w-full h-96 object-cover" />
   <div class="absolute w-full justify-between px-2 md:flex hidden">
-    <button class="ml-2">
+    <button class="ml-2" (click)="decrement()">
       <mat-icon>chevron_left</mat-icon>
     </button>
-    <button class="mr-2" color="primary">
+    <button class="mr-2" color="primary" (click)="increment()">
       <mat-icon>chevron_right</mat-icon>
     </button>
   </div>

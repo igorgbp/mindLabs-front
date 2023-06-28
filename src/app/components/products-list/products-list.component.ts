@@ -17,7 +17,7 @@ export class ProductsListComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.listProducts);
+    console.log('into list',this.listProducts);
   }
 
   itemSelected(item: Product): void {

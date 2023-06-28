@@ -4,78 +4,160 @@
 >
   <div class="w-full flex flex-col">
     <app-title-screen title="Endereço"></app-title-screen>
-    <div class="mt-4 mb-8 grid grid-cols-2">
-      <div class="w-full flex flex-col ">
-      <div class="flex w-full gap-4">
-        <div class="w-96 ">
-          <p class="text-md font-semibold text-DarkHover mx-2">Rua</p>
-          <input
-            type="text"
-            class="p-2 px-4  rounded-lg bg-Light focus:bg-LightHover outline-none mb-4 w-full"
-          />
+    <div class="mt-4 mb-8 grid md:grid-cols-2 grid-cols-1">
+      <div *ngIf="addressListVisible" class="w-full flex flex-col p-2">
+        <div class="flex gap-6 items-center mb-3">
+          <p class="ml-2 text-md text-DarkHover font-semibold">
+            Endereços cadastrados
+          </p>
+          <button
+            class="rounded-full bg-Light border-2 border-LightHover flex"
+            *ngIf="!newAddressVisible"
+            (click)="newAddressVisible = true"
+          >
+            <mat-icon class="text-DarkHover">add</mat-icon>
+          </button>
         </div>
-        <div class="w-20">
-          <p class="text-md font-semibold text-DarkHover mx-2">Número</p>
-          <input
-            type="text"
-            class="p-2 px-4 w-full rounded-lg bg-Light focus:bg-LightHover outline-none mb-4"
-          />
-        </div>
-      </div>
 
-      <div class="flex w-full gap-4">
-        <div class="w-72 ">
-          <p class="text-md font-semibold text-DarkHover mx-2">Bairro</p>
-          <input
-            type="text"
-            class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none mb-4 w-full"
-          />
-        </div>
-        <div class="w-72">
-          <p class="text-md font-semibold text-DarkHover mx-2">Cidade</p>
-          <input
-            type="text"
-            class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none mb-4"
-          />
-        </div>
+        <button
+          class="px-4 p-2 w-full rounded-lg mb-2 flex items-center justify-start gap-6"
+          [ngClass]="{
+            'bg-Light':
+              selectedAddress === undefined ||
+              item.idaddress != selectedAddress.idaddress,
+            'bg-LightHover':
+              selectedAddress !== undefined &&
+              item.idaddress === selectedAddress.idaddress
+          }"
+          *ngFor="let item of addressList"
+        >
+          <button class="flex justify-center items-center" (click)="removeAddress(item.idaddress!)">
+            <mat-icon class="text-Red">remove_circle_outlined</mat-icon>
+          </button>
+          <div class="flex flex-col items-start">
+            <p class="text-sm">
+              <span class="text-DarkHover text-sm">Rua: </span>
+              {{ item.street }}
+            </p>
+
+            <p class="text-sm">
+              <span class="text-DarkHover text-sm">Número: </span
+              >{{ item.number }}
+            </p>
+            <p class="text-sm">
+              <span class="text-DarkHover text-sm">Bairro: </span
+              >{{ item.neighborhood }}
+            </p>
+          </div>
+
+          <div class="flex flex-col items-start">
+            <p class="text-sm">
+              <span class="text-DarkHover text-sm">Cidade: </span
+              >{{ item.city }}
+            </p>
+            <p class="text-sm">
+              <span class="text-DarkHover text-sm">Estado: </span
+              >{{ item.state }}
+            </p>
+
+            <p class="text-sm">
+              <span class="text-DarkHover text-sm">Complemento: </span
+              >{{ item.complement }}
+            </p>
+          </div>
+          <div class="ml-auto flex flex-col">
+            <button class="flex justify-center items-center" (click)="selectAddress(item)">
+              <mat-icon class="text-Blue">chevron_right</mat-icon>
+            </button>
+          </div>
+        </button>
       </div>
-      <div class="flex w-full gap-4">
-        <div class="w-40 ">
-          <p class="text-md font-semibold text-DarkHover mx-2">Estado</p>
-          <input
-            type="text"
-            class="p-2 px-4  rounded-lg bg-Light focus:bg-LightHover outline-none mb-4 w-full"
-          />
+      <div class="w-full flex flex-col p-2" *ngIf="newAddressVisible">
+        <div class="flex gap-6 items-center mb-3">
+          <p class="ml-0 text-md text-DarkHover font-semibold ml-2">
+            Cadastrar novo endereço
+          </p>
         </div>
-        <div class="w-72">
-          <p class="text-md font-semibold text-DarkHover mx-2">Complemento</p>
-          <input
-            type="text"
-            class="p-2 px-4 w-full rounded-lg bg-Light focus:bg-LightHover outline-none mb-4"
-          />
+        <div class="flex md:flex-row flex-col w-full gap-4 mb-1">
+          <div class="md:w-96 w-full">
+            <p class="text-sm ml-1 text-DarkHover">Rua</p>
+            <input
+              [(ngModel)]="street"
+              type="text"
+              class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none w-full"
+            />
+          </div>
+          <div class="md:w-20 w-full">
+            <p class="text-sm ml-1 text-DarkHover">Número</p>
+            <input
+              [(ngModel)]="number"
+              type="text"
+              class="p-2 px-4 w-full rounded-lg bg-Light focus:bg-LightHover outline-none"
+            />
+          </div>
         </div>
+
+        <div class="flex md:flex-row flex-col w-full gap-4 mb-1">
+          <div class="md:w-72 w-full">
+            <p class="text-sm ml-1 text-DarkHover">Bairro</p>
+            <input
+              [(ngModel)]="neighborhood"
+              type="text"
+              class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none w-full"
+            />
+          </div>
+          <div class="md:w-72 w-full">
+            <p class="text-sm ml-1 text-DarkHover">Cidade</p>
+            <input
+              [(ngModel)]="city"
+              type="text"
+              class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none w-full"
+            />
+          </div>
+        </div>
+        <div class="flex md:flex-row flex-col w-full gap-4">
+          <div class="md:w-40 w-full">
+            <p class="text-sm ml-1 text-DarkHover">Estado</p>
+            <input
+              [(ngModel)]="state"
+              type="text"
+              class="p-2 px-4 rounded-lg bg-Light focus:bg-LightHover outline-none w-full"
+            />
+          </div>
+          <div class="md:w-72 w-full">
+            <p class="text-sm ml-1 text-DarkHover">Complemento</p>
+            <input
+              [(ngModel)]="complement"
+              type="text"
+              class="p-2 px-4 w-full rounded-lg bg-Light focus:bg-LightHover outline-none"
+            />
+          </div>
+        </div>
+        <button
+          (click)="cadAddress()"
+          class="mt-2 rounded-lg w-fit py-1 px-2 mx-auto bg-Blue"
+        >
+          <p class="font-semibold text-sm text-White">Salvar</p>
+        </button>
       </div>
     </div>
-    </div>
-    
 
     <app-title-screen title="Pagamento"></app-title-screen>
-
-    <div class="pt-4">
+    <div class="pt-4 flex flex-col items-center md:items-start">
       <!-- <button>Criar novo endereço</button> -->
       <button
         (click)="generatePixQr()"
-        class="border-2 p-4 rounded-lg flex items-center justify-center"
+        class="bg-Light p-2 rounded-lg h-14 w-64 flex items-center justify-center gap-4"
       >
-        <p class="text-DarkHover">Gerar qr pix</p>
-        <mat-icon class="mat-icon-size">arrow_forward_ios</mat-icon>
+        <mat-icon class="mat-icon-size-lg text-Pix">pix</mat-icon>
+        <p class="text-DarkHover font-semibold">Gerar Código QR</p>
+        <mat-icon class="mat-icon-size text-DarkHover"
+          >arrow_forward_ios</mat-icon
+        >
       </button>
+      <p class="py-2 text-Blue font-semibold text-md ml-2"> <span class="text-Red">Erro ao gerar QR:</span> certifique-se de que você selecionou um endereço e cadastrou os dados pessoais corretamente</p>
       <div *ngIf="visiblePix">
-        <img
-          class="border-2 w-96"
-          src="data:image/jpeg;base64,{{qrCode}}"
-          alt=""
-        />
+        <img class="w-96" src="data:image/jpeg;base64,{{ qrCode }}" alt="" />
       </div>
     </div>
   </div>

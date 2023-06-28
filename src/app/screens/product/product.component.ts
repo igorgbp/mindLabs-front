@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { StateService } from "src/app/services/state/state-service.service";
 import { Product } from "../home/home.component";
 import { ProductService } from "src/app/services/product.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-product",
@@ -13,7 +14,7 @@ export class ProductComponent {
   produtoArmazenado = localStorage.getItem("produtoSelecionado");
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private userService: UserService) {
     console.log(localStorage);
     this.produtoSelecionado = JSON.parse(this.produtoArmazenado!);
   }
@@ -38,5 +39,17 @@ export class ProductComponent {
 
     localStorage.setItem("carrinho", JSON.stringify(carrinhoAtual));
     console.log("storaaa", localStorage);
+  }
+
+  setFavorite(){
+    this.userService.cadFavorite(this.produtoSelecionado!.id).subscribe(
+      (data) => {
+      
+        console.log(this.products);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }

@@ -14,7 +14,7 @@ export class PaymentService {
     // this.token = process.env.MPTOKEN;
   }
   Payment(transaction: Transaction):Observable<any> {
-   
+   console.log(transaction)
     const apiKey = environment.apipix;
     const headers = {
       'Content-Type': 'application/json',

@@ -21,6 +21,7 @@ export class LoginComponent {
 
     this.userService.login(userCredentials).subscribe(
       (data:UserLogged) => {
+        console.log(data)
         localStorage.setItem('user', JSON.stringify(data))
         localStorage.setItem('carrinho', '');
         console.log(localStorage)

@@ -1,1 +1,9 @@
-<p>categorie-area works!</p>
+<app-header></app-header>
+<div
+  class="fullscreen flex md:flex-row flex-col md:py-6 py-3 md:px-20 px-4 gap-2"
+>
+  <div class="w-full flex flex-col">
+    <app-title-screen title="{{categorySelected?.name}}"></app-title-screen>
+    <app-products-list  [listProducts]="productList!" ></app-products-list>
+  </div>
+</div>

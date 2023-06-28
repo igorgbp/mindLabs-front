@@ -11,7 +11,10 @@ export class CartComponent {
   carrinho: Array<Product> = [];
   totalValue: number = 0;
   constructor(private router:Router) {
-   
+    if(!localStorage.getItem('user')){
+      this.router.navigate([''])
+    
+    }
    if(localStorage.getItem("carrinho")!.length>0) this.carrinho = JSON.parse(localStorage.getItem("carrinho")!);
     
     for(let i=0; i<this.carrinho.length; i++ )

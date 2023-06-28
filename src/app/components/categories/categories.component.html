@@ -1,11 +1,20 @@
-<div class=" flex items-center flex-col ">
-  <div class=" grid grid-cols-4 md:grid-cols-8 gap-2 md:gap-2  md:mt-3 mt-1 px-2">
-    <app-item-categorie
+<div class="flex items-center flex-col">
+  <div class="grid grid-cols-4 md:grid-cols-8 gap-2 md:gap-2 md:mt-3 mt-1 px-2">
+    <button
       *ngFor="let item of categories"
-      [id]="item.id"
-      [name]="item.name"
-      [description]="item.description"
-      [image]="item.image"
-    ></app-item-categorie>
+      class="bg-Light hover:bg-LightHover py-2 px-2 flex flex-col justify-center items-center rounded-lg w-full overflow-hidden group"
+      (click)="itemSelected(item)"
+    >
+      <!-- <mat-icon class="mat-icon-size-categories ">{{ icon }}</mat-icon> -->
+      <img
+        src="{{ item.image }}"
+        class="transition duration-400 md:w-20 md:h-20 w-14 h-14 group-hover:scale-110 object-contain"
+      />
+      <p
+        class="text-sm md:text-md text-center text-Blue font-medium mt-1 truncate"
+      >
+        {{ item.name }}
+      </p>
+    </button>
   </div>
 </div>
